@@ -3,159 +3,651 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duy Son (Jackson) Vo - Portfolio</title>
+    <title>Duy Son (Jackson) Vo — Computational Biology</title>
+    <meta name="description" content="Duy Son (Jackson) Vo — PhD student in Cellular & Molecular Biology at ASU / TGen. Single-cell and spatial-omics, deep learning, bioinformatics.">
     <style>
         :root {
-            --primary-color: #0366d6;
-            --text-color: #24292e;
-            --bg-color: #f6f8fa;
-            --container-bg: #ffffff;
-            --border-color: #e1e4e8;
+            --bg: #0d1117;
+            --bg-soft: #161b22;
+            --bg-card: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-dim: #8b949e;
+            --accent: #58a6ff;
+            --accent-2: #3fb950;
+            --accent-soft: rgba(88, 166, 255, 0.12);
+            --shadow: 0 1px 3px rgba(0,0,0,0.4);
+            --radius: 12px;
         }
+        :root[data-theme="light"] {
+            --bg: #ffffff;
+            --bg-soft: #f6f8fa;
+            --bg-card: #ffffff;
+            --border: #d0d7de;
+            --text: #1f2328;
+            --text-dim: #636c76;
+            --accent: #0969da;
+            --accent-2: #1a7f37;
+            --accent-soft: rgba(9, 105, 218, 0.08);
+            --shadow: 0 1px 3px rgba(27,31,36,0.12);
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            line-height: 1.65;
+            color: var(--text);
+            background: var(--bg);
             margin: 0;
-            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: var(--container-bg);
-            padding: 40px;
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ---- Nav ---- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: color-mix(in srgb, var(--bg) 85%, transparent);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand { font-weight: 700; font-size: 1.05em; letter-spacing: -0.01em; }
+        .nav-brand .mono { color: var(--accent); }
+        .nav-links { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+        .nav-links a {
+            color: var(--text-dim);
+            font-size: 0.92em;
+            padding: 6px 10px;
             border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color);
+            transition: color 0.2s, background 0.2s;
         }
-        header {
-            text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 30px;
+        .nav-links a:hover { color: var(--text); background: var(--bg-soft); text-decoration: none; }
+        .theme-toggle {
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            display: inline-flex; align-items: center; justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .theme-toggle:hover { background: var(--accent-soft); transform: translateY(-1px); }
+
+        .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+        /* ---- Hero ---- */
+        header.hero {
+            padding: 72px 24px 56px;
+            border-bottom: 1px solid var(--border);
+            background:
+                radial-gradient(900px 400px at 80% -10%, var(--accent-soft), transparent 60%);
+        }
+        .hero-inner { max-width: 980px; margin: 0 auto; }
+        .eyebrow {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+            color: var(--accent-2);
+            font-size: 0.85em;
+            letter-spacing: 0.02em;
+            margin-bottom: 14px;
         }
         h1 {
-            font-size: 2.5em;
-            margin: 0 0 10px 0;
+            font-size: clamp(2.2em, 5vw, 3.4em);
+            line-height: 1.1;
+            margin: 0 0 14px;
+            letter-spacing: -0.02em;
         }
-        .contact {
-            font-size: 1.1em;
-            color: #586069;
+        .tagline {
+            font-size: clamp(1.05em, 2.4vw, 1.35em);
+            color: var(--text-dim);
+            max-width: 680px;
+            margin: 0 0 28px;
         }
-        .contact a {
-            color: var(--primary-color);
-            text-decoration: none;
+        .tagline strong { color: var(--text); font-weight: 600; }
+        .hero-links { display: flex; flex-wrap: wrap; gap: 10px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 9px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text);
+            font-size: 0.92em;
+            font-weight: 500;
+            transition: border-color 0.2s, transform 0.2s, background 0.2s;
         }
-        .contact a:hover {
-            text-decoration: underline;
+        .btn:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-2px); }
+        .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .btn.primary:hover { background: color-mix(in srgb, var(--accent) 88%, #000); }
+
+        /* ---- Sections ---- */
+        section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+        section:last-of-type { border-bottom: none; }
+        .section-label {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+            color: var(--accent);
+            font-size: 0.82em;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
         }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-top: 30px;
+        h2 { font-size: 1.7em; margin: 0 0 28px; letter-spacing: -0.01em; }
+        h3 { font-size: 1.15em; margin: 0 0 4px; }
+        .lead { font-size: 1.08em; color: var(--text-dim); max-width: 760px; }
+        .lead strong { color: var(--text); }
+
+        /* ---- Timeline ---- */
+        .timeline { position: relative; }
+        .entry {
+            position: relative;
+            padding: 0 0 32px 28px;
+            border-left: 2px solid var(--border);
         }
-        h3 {
-            margin: 20px 0 5px 0;
-            font-size: 1.3em;
+        .entry:last-child { padding-bottom: 0; }
+        .entry::before {
+            content: "";
+            position: absolute;
+            left: -7px; top: 4px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--bg);
         }
-        .meta {
-            font-size: 0.95em;
-            color: #586069;
-            font-style: italic;
-            margin-bottom: 15px;
+        .entry-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
+        .entry .org { color: var(--text-dim); font-size: 0.95em; }
+        .entry .when {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+            font-size: 0.82em;
+            color: var(--text-dim);
+            white-space: nowrap;
         }
-        ul {
-            padding-left: 20px;
+        .entry .role { color: var(--accent-2); font-weight: 600; font-size: 0.95em; margin: 2px 0 8px; }
+        .proj-list { list-style: none; padding: 0; margin: 10px 0 0; }
+        .proj-list > li { margin-bottom: 12px; }
+        .proj-list .pname { font-weight: 600; }
+        .muted { color: var(--text-dim); }
+
+        /* ---- Cards / publications ---- */
+        .cards { display: grid; gap: 16px; }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
-        li {
-            margin-bottom: 8px;
+        .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+        .card .pub-title { font-weight: 600; font-size: 1.04em; margin: 0 0 8px; line-height: 1.4; }
+        .card .authors { color: var(--text-dim); font-size: 0.92em; margin: 0 0 10px; }
+        .card .authors .me { color: var(--text); font-weight: 700; }
+        .card-foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .tag {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+            font-size: 0.74em;
+            padding: 3px 9px;
+            border-radius: 20px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
         }
-        .project-title {
-            font-weight: 600;
-            margin-top: 15px;
+        .tag.wip { background: rgba(210,153,34,0.12); color: #d29922; border-color: rgba(210,153,34,0.4); }
+        .tag.venue { background: var(--bg-soft); color: var(--text-dim); border-color: var(--border); }
+        .doi { font-size: 0.85em; }
+
+        /* ---- Skill groups ---- */
+        .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .skill-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+        .skill-card h4 { margin: 0 0 12px; font-size: 0.95em; color: var(--accent); }
+        .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+        .chip {
+            font-size: 0.82em;
+            padding: 4px 11px;
+            border-radius: 6px;
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        /* ---- Two-col grids ---- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+        .mini h3 { font-size: 1.05em; }
+        .mini .when { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 0.8em; color: var(--text-dim); }
+        .award { padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .award:last-child { border-bottom: none; }
+        .award .a-title { font-weight: 600; }
+
+        footer {
+            padding: 40px 24px 60px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9em;
+        }
+        footer a { color: var(--text-dim); }
+        .footer-links { margin-bottom: 12px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+        @media (max-width: 680px) {
+            .grid-2 { grid-template-columns: 1fr; gap: 0; }
+            .nav-links { display: none; }
+            header.hero { padding: 48px 24px 40px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Duy Son (Jackson) Vo</h1>
-            <div class="contact">
-                3941 S Mill Ave, Tempe, Arizona, USA 85282<br>
-                <a href="mailto:duyson1999@gmail.com">duyson1999@gmail.com</a> | <a href="mailto:svo@tgen.org">svo@tgen.org</a><br>
-                GitHub: <a href="https://github.com/sondvo" target="_blank">github.com/sondvo</a>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-brand">Jackson&nbsp;<span class="mono">Vo</span></div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">🌙</button>
             </div>
-        </header>
+        </div>
+    </nav>
 
-        <section id="education">
-            <h2>Education</h2>
-            
-            <h3>Arizona State University & The Translational Genomics Research Institute</h3>
-            <div class="meta">PhD student, Cellular and Molecular Biology | Phoenix, Arizona, USA | 2025 - Present</div>
-            <ul>
-                <li>Cumulative GPA: 4.00/4.00</li>
-            </ul>
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="eyebrow">PhD Student · Computational Biology</div>
+            <h1>Duy Son (Jackson) Vo</h1>
+            <p class="tagline">
+                I build <strong>single-cell &amp; spatial-omics</strong> pipelines and apply
+                <strong>deep learning</strong> to large-scale biological data —
+                currently at <strong>ASU &amp; TGen</strong> studying tissue niches in pulmonary fibrosis.
+            </p>
+            <div class="hero-links">
+                <a class="btn primary" href="mailto:svo@tgen.org">✉ Email</a>
+                <a class="btn" href="https://github.com/sondvo" target="_blank" rel="noopener">⌥ GitHub</a>
+                <a class="btn" href="#publications">📄 Publications</a>
+                <a class="btn" href="#research">🔬 Research</a>
+            </div>
+        </div>
+    </header>
 
-            <h3>Ho Chi Minh City International University - Vietnam National University</h3>
-            <div class="meta">Bachelor of Science, Biotechnology | Ho Chi Minh City, Vietnam | 2017 - 2022</div>
-            <ul>
-                <li>Cumulative GPA: 82.8 / 100 (Degree Classification: very good)</li>
-                <li>Thesis: In silico identification of defensins in the Black Soldier Fly (grade: 93)</li>
-            </ul>
+    <main class="wrap">
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-label">// about</div>
+            <h2>About</h2>
+            <p class="lead">
+                I'm a PhD student in <strong>Cellular &amp; Molecular Biology</strong> at Arizona State
+                University and the Translational Genomics Research Institute (TGen), advised by
+                <strong>Nicholas Banovich, Ph.D.</strong> My work sits at the intersection of
+                <strong>spatial transcriptomics, single-cell genomics, and machine learning</strong> —
+                building scalable analysis pipelines (often from scratch) and using deep learning to make
+                sense of datasets exceeding 100&nbsp;million cells.
+            </p>
+            <p class="lead" style="margin-top:16px;">
+                Before my PhD I was a Biomedical Research Scientist at <strong>BioTuring</strong>, where I
+                led computational collaborations with the NIH, Vertex, the Melton Lab at Harvard, and the
+                University of Calgary, and helped build software now used by 70+ pharmaceutical companies and
+                research institutes.
+            </p>
         </section>
 
-        <section id="experience">
+        <!-- RESEARCH / EXPERIENCE -->
+        <section id="research">
+            <div class="section-label">// experience</div>
             <h2>Research Experience</h2>
+            <div class="timeline">
 
-            <h3>The Translational Genomics Research Institute</h3>
-            <div class="meta">PhD Student | Advisor: Nicholas Banovich, Ph.D. | Phoenix, Arizona, USA | 08/2025 - Present</div>
-            <ul>
-                <li><span class="project-title">Project: IPF niche analysis:</span> Multi-omics analysis on large-scale datasets (>100M cells). Utilized Deep Learning to incorporate spatial coordinates and transcriptomics for detecting different tissue domains in the VisiumHD and Xenium datasets.</li>
-                <li><span class="project-title">Project: IPF polygenic risk scores and single-cell morphology:</span> Bridging individual clinical background, genetics information, with spatial transcriptomics and cell morphology (H&E / IHC).</li>
-            </ul>
+                <div class="entry">
+                    <div class="entry-head">
+                        <h3>The Translational Genomics Research Institute (TGen) &amp; ASU</h3>
+                        <span class="when">Aug 2025 — Present</span>
+                    </div>
+                    <div class="role">PhD Student · Advisor: Nicholas Banovich, Ph.D.</div>
+                    <div class="org">Phoenix, Arizona, USA</div>
+                    <ul class="proj-list">
+                        <li>
+                            <span class="pname">IPF niche analysis.</span>
+                            <span class="muted">Multi-omics analysis on large-scale datasets (&gt;100M cells); applied
+                            deep learning to jointly model spatial coordinates and transcriptomics, detecting distinct
+                            tissue domains in VisiumHD and Xenium data.</span>
+                        </li>
+                        <li>
+                            <span class="pname">IPF polygenic risk scores &amp; single-cell morphology.</span>
+                            <span class="muted">Bridging individual clinical background and genetics with spatial
+                            transcriptomics and cell morphology (H&amp;E / IHC).</span>
+                        </li>
+                    </ul>
+                </div>
 
-            <h3>BioTuring Inc.</h3>
-            <div class="meta">Biomedical Research Scientist | Advisors: Thang Pham, Ph.D.; Han Do, Ph.D.; Son Pham, Ph.D. | Ho Chi Minh City, Vietnam | 10/2023 - 06/2025</div>
-            <ul>
-                <li><span class="project-title">Immune landscape in Classic Galactosemia:</span> Representing BioTuring to collaborate with NIH scientists to conduct spatial, single-cell analyses.</li>
-                <li><span class="project-title">Stem-cell derived islets in treating Type 1 Diabetes:</span> Representing BioTuring to collaborate with Vertex, Curio, and Harvard University (Melton lab) to understand how immune cells interact with stem cell-derived islet cells. Conducted differential gene expression, pathway enrichment, trajectory analyses, and cell-cell communication on single-cell data. Incorporated spatial data to assess distance effects.</li>
-                <li><span class="project-title">CosMX kidney analyses:</span> Managed computational analyses and established an accurate cell type annotation pipeline of kidney tissue from CosMX technology in collaboration with the University of Calgary.</li>
-                <li><span class="project-title">Cell type prediction and CD4+ helper atlases:</span> Developed a new algorithm to predict all subtypes of CD4+ helper T cells. Established an efficient generic pipeline to preprocess and integrate large datasets. Finished T-helper 2, T-helper 17, Regulatory T cell, T follicular helper, and T-helper 1 atlases.</li>
-            </ul>
+                <div class="entry">
+                    <div class="entry-head">
+                        <h3>BioTuring Inc.</h3>
+                        <span class="when">Oct 2023 — Jun 2025</span>
+                    </div>
+                    <div class="role">Biomedical Research Scientist</div>
+                    <div class="org">Advisors: Thang Pham, Ph.D.; Han Do, Ph.D.; Son Pham, Ph.D. · Ho Chi Minh City, Vietnam</div>
+                    <ul class="proj-list">
+                        <li>
+                            <span class="pname">Stem-cell-derived islets for Type&nbsp;1 Diabetes.</span>
+                            <span class="muted">Collaboration with Vertex, Curio, and Harvard (Melton Lab). Ran
+                            differential expression, pathway enrichment, trajectory, and cell-cell communication
+                            analyses on single-cell data, integrating spatial data to assess distance effects on
+                            cell-type composition and interactions.</span>
+                        </li>
+                        <li>
+                            <span class="pname">CosMx kidney analyses.</span>
+                            <span class="muted">Collaboration with the University of Calgary (Chun Lab). Managed all
+                            computational analyses and built an accurate cell-type annotation pipeline for CosMx kidney
+                            tissue, generalizable to MERFISH and Xenium — yielding two papers (methodology, first author).</span>
+                        </li>
+                        <li>
+                            <span class="pname">CD4+ helper T-cell atlases.</span>
+                            <span class="muted">Developed an algorithm to predict CD4+ helper T-cell subtypes and built
+                            integrated atlases (Th2, Th17, Treg, Tfh, Th1) directly from raw matrices without Scanpy/Seurat.
+                            Th2 atlas accepted as a RECOMB 2024 poster; now in collaboration with Johnson&amp;Johnson.</span>
+                        </li>
+                        <li>
+                            <span class="pname">Immune landscape in Classic Galactosemia.</span>
+                            <span class="muted">Spatial and single-cell analyses in collaboration with NIH scientists.</span>
+                        </li>
+                        <li>
+                            <span class="pname">Single-cell clonotypes (scTCR/BCR).</span>
+                            <span class="muted">Developed a clonotype-processing pipeline and published an open-source
+                            package for clonotype analysis and visualization.</span>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="meta">Bioinformatician - Software Engineer | Supervisors: Huy Nguyen; Thao Truong | Ho Chi Minh City, Vietnam | 5/2022 - 12/2023</div>
-            <ul>
-                <li>Contributed to developing back-end of BioTuring ecosystem products (Talk2Data, BBrowserX, Lens) used by >70 pharmaceutical companies.</li>
-                <li>Investigated and created official pipelines for emerging spatial-omics technologies: Visium, GeoMx, Xenium, CosMx, MERFISH, CODEX, CyCIF, mIHC.</li>
-                <li>Developed and maintained BioTuring API packages: Bioflex and BioTuring SDK.</li>
-            </ul>
+                <div class="entry">
+                    <div class="entry-head">
+                        <h3>BioTuring Inc.</h3>
+                        <span class="when">May 2022 — Dec 2023</span>
+                    </div>
+                    <div class="role">Bioinformatician · Software Engineer</div>
+                    <div class="org">Supervisors: Huy Nguyen; Thao Truong · Ho Chi Minh City, Vietnam</div>
+                    <ul class="proj-list">
+                        <li><span class="muted">Built back-end services for BioTuring's product ecosystem —
+                            <strong>Talk2Data, BBrowserX, Lens</strong> — now used by 70+ pharmaceutical companies and institutes.</span></li>
+                        <li><span class="muted">Designed the official analysis pipelines for spatial-omics technologies:
+                            Visium, GeoMx, Xenium, CosMx, MERFISH, CODEX, CyCIF, mIHC.</span></li>
+                        <li><span class="muted">Developed and maintained API packages: <strong>Bioflex</strong> and the
+                            <strong>BioTuring SDK / BioTuringConnector</strong>.</span></li>
+                    </ul>
+                </div>
 
-            <div class="meta">Data Curator | Supervisor: Thao Truong | Ho Chi Minh City, Vietnam | 1/2022 - 5/2022</div>
-            <ul>
-                <li>Collected single-cell datasets from public studies and standardized formats using Python, R, and bash. Added approximately 1,000 studies to the database.</li>
-            </ul>
+                <div class="entry">
+                    <div class="entry-head">
+                        <h3>BioTuring Inc.</h3>
+                        <span class="when">Jan 2022 — May 2022</span>
+                    </div>
+                    <div class="role">Data Curator</div>
+                    <div class="org">Supervisor: Thao Truong · Ho Chi Minh City, Vietnam</div>
+                    <ul class="proj-list">
+                        <li><span class="muted">Curated single-cell datasets from public studies, standardizing diverse
+                            formats and metadata with Python, R, and bash. Helped add ~1,000 studies in five months —
+                            then the world's largest curated single-cell database.</span></li>
+                    </ul>
+                </div>
+
+                <div class="entry">
+                    <div class="entry-head">
+                        <h3>International University — VNU</h3>
+                        <span class="when">Oct 2019 — Jan 2022</span>
+                    </div>
+                    <div class="role">Research Student · Advisor: Thong Le, Ph.D.</div>
+                    <div class="org">Ho Chi Minh City, Vietnam</div>
+                    <ul class="proj-list">
+                        <li><span class="pname">B.Sc. thesis (grade 93):</span>
+                            <span class="muted">In silico identification of defensins in the Black Soldier Fly. Self-taught
+                            programming and computational analysis; built a Python pipeline to annotate genes across species
+                            and characterized defensin family evolution.</span></li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
+        <!-- PUBLICATIONS -->
         <section id="publications">
-            <h2>Select Publications & Posters</h2>
-            <ul>
-                <li><strong>Son Vo</strong>, Kieran Meadows, Han Do, Kevin Chapman, Graciela Andonegui, Daniel A. Muruve, Thang Pham, and Justin Chun. "Streamlining Spatial Transcriptomics for Human Kidney Tissue". BioTechniques, DOI: 10.1080/07366205.2025.2591484</li>
-                <li>Kieran Meadows, Hyunjae Chung, <strong>Son Vo</strong>, et al. "Spatial transcriptomics identifies IL-32 as a lipid droplet-associated cytokine linked to tubular injury in human diabetic kidney disease." Inflammation Research, DOI: 10.1007/s00011-026-02192-y</li>
-                <li>Raghuveer Kavarthapu, <strong>Son Vo</strong>, et al. "Transcriptomic profiling of the ovarian immune landscape reveals distinct macrophage subsets..." Cell Communication and Signaling, DOI: 10.1186/s12964-026-02950-9</li>
-                <li><strong>Son Vo*</strong>, Marian Suprun*, Han Do, My Ngo, Rajesh Rao, Marta Polak, Calixte Monast, and Son Pham. "Single-Cell Atlas of T-Helper 2 Cells Reveals Distinct Cytokine Functions Across Diseases". Preprint, DOI: 10.1101/2025.09.20.677532</li>
-                <li><em>Poster:</em> <strong>Son Vo</strong>, Hiep Dang, Han Do, and Son Pham. "Unveiling the Th2 Cell Landscape...". Research in Computational Molecular Biology - RECOMB, U.S.A., 5/2024</li>
-            </ul>
+            <div class="section-label">// publications</div>
+            <h2>Publications &amp; Posters</h2>
+            <div class="cards">
+
+                <article class="card">
+                    <p class="pub-title">Streamlining Spatial Transcriptomics for Human Kidney Tissue</p>
+                    <p class="authors"><span class="me">Son Vo</span>, Kieran Meadows, Han Do, Kevin Chapman, Graciela Andonegui, Daniel A. Muruve, Thang Pham, Justin Chun</p>
+                    <div class="card-foot">
+                        <span class="tag">First author</span>
+                        <span class="tag venue">BioTechniques</span>
+                        <a class="doi" href="https://doi.org/10.1080/07366205.2025.2591484" target="_blank" rel="noopener">DOI ↗</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="pub-title">Single-Cell Atlas of T-Helper 2 Cells Reveals Distinct Cytokine Functions Across Diseases</p>
+                    <p class="authors"><span class="me">Son Vo*</span>, Marian Suprun*, Han Do, My Ngo, Rajesh Rao, Marta Polak, Calixte Monast, Son Pham</p>
+                    <div class="card-foot">
+                        <span class="tag">Co-first author</span>
+                        <span class="tag venue">Preprint · in review, Scientific Reports</span>
+                        <a class="doi" href="https://doi.org/10.1101/2025.09.20.677532" target="_blank" rel="noopener">DOI ↗</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="pub-title">Spatial transcriptomics identifies IL-32 as a lipid droplet-associated cytokine linked to tubular injury in human diabetic kidney disease</p>
+                    <p class="authors">Kieran Meadows, Hyunjae Chung, <span class="me">Son Vo</span>, et al., Daniel A. Muruve, Justin Chun</p>
+                    <div class="card-foot">
+                        <span class="tag venue">Inflammation Research</span>
+                        <a class="doi" href="https://doi.org/10.1007/s00011-026-02192-y" target="_blank" rel="noopener">DOI ↗</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="pub-title">Transcriptomic profiling of the ovarian immune landscape reveals distinct macrophage subsets and NLRP3 inflammasome activation contributing to accelerated follicular atresia in classic galactosemia</p>
+                    <p class="authors">Raghuveer Kavarthapu, <span class="me">Son Vo</span>, et al., Thang Pham, Veronica Gomez-lobo</p>
+                    <div class="card-foot">
+                        <span class="tag venue">Cell Communication and Signaling</span>
+                        <a class="doi" href="https://doi.org/10.1186/s12964-026-02950-9" target="_blank" rel="noopener">DOI ↗</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="pub-title">Stem-cell-derived islet in treating Type 1 Diabetes</p>
+                    <p class="authors">Shlomi Brielle, <span class="me">Son Vo</span>, Son Pham, Danny Bavli, Douglas Melton</p>
+                    <div class="card-foot">
+                        <span class="tag wip">Work in progress</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="pub-title">Classic galactosemia and Oophoritis</p>
+                    <p class="authors">Raghuveer Kavarthapu, <span class="me">Son Vo</span>, Thang Pham, Han Do, Veronica Gomez-lobo</p>
+                    <div class="card-foot">
+                        <span class="tag wip">Work in progress</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <p class="pub-title">Unveiling the Th2 Cell Landscape: A Comprehensive Single-Cell Atlas Reveals Functional Heterogeneity Across Health and Disease</p>
+                    <p class="authors"><span class="me">Son Vo</span>, Hiep Dang, Han Do, Son Pham</p>
+                    <div class="card-foot">
+                        <span class="tag">Poster</span>
+                        <span class="tag venue">RECOMB 2024, U.S.A.</span>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section id="skills-awards">
-            <h2>Certificates & Honors</h2>
-            <ul>
-                <li><strong>Honors:</strong> Nominated candidate of Vietnam Education Foundation 2.0 (9/2024); Top 5% in National Entrance Exam of the School of Biotechnology (2017-2022).</li>
-                <li><strong>Certificates (Coursera):</strong> PyTorch for Deep Learning, Math for Machine Learning: Linear Algebra, Data Structures and Algorithms, Data Visualization with Python, Python for Genomics Data Science.</li>
-            </ul>
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="section-label">// toolkit</div>
+            <h2>Skills &amp; Technologies</h2>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h4>Languages</h4>
+                    <div class="chips">
+                        <span class="chip">Python</span>
+                        <span class="chip">R</span>
+                        <span class="chip">Bash</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Single-cell &amp; Spatial Omics</h4>
+                    <div class="chips">
+                        <span class="chip">Visium / VisiumHD</span>
+                        <span class="chip">Xenium</span>
+                        <span class="chip">CosMx</span>
+                        <span class="chip">MERFISH</span>
+                        <span class="chip">GeoMx</span>
+                        <span class="chip">CODEX</span>
+                        <span class="chip">CyCIF</span>
+                        <span class="chip">mIHC</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Analysis &amp; ML</h4>
+                    <div class="chips">
+                        <span class="chip">Deep Learning</span>
+                        <span class="chip">PyTorch</span>
+                        <span class="chip">Scanpy</span>
+                        <span class="chip">Seurat</span>
+                        <span class="chip">Differential Expression</span>
+                        <span class="chip">Trajectory Analysis</span>
+                        <span class="chip">Cell-Cell Communication</span>
+                        <span class="chip">Pathway Enrichment</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Engineering</h4>
+                    <div class="chips">
+                        <span class="chip">Back-end APIs</span>
+                        <span class="chip">Pipeline Design</span>
+                        <span class="chip">Large-scale Data</span>
+                        <span class="chip">Data Curation</span>
+                    </div>
+                </div>
+            </div>
         </section>
-    </div>
+
+        <!-- EDUCATION + TEACHING -->
+        <section id="education">
+            <div class="section-label">// background</div>
+            <h2>Education &amp; Teaching</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 style="margin-bottom:18px;">Education</h3>
+                    <div class="entry" style="border-left:2px solid var(--border);">
+                        <div class="entry-head">
+                            <h3>Arizona State University &amp; TGen</h3>
+                            <span class="when">2025 — Present</span>
+                        </div>
+                        <div class="role">Ph.D., Cellular &amp; Molecular Biology</div>
+                        <div class="org">GPA 4.00 / 4.00 · Phoenix, AZ, USA</div>
+                    </div>
+                    <div class="entry" style="padding-bottom:0;">
+                        <div class="entry-head">
+                            <h3>International University — VNU</h3>
+                            <span class="when">2017 — 2022</span>
+                        </div>
+                        <div class="role">B.Sc., Biotechnology</div>
+                        <div class="org">GPA 82.8 / 100 · "Very good" classification · Ho Chi Minh City, Vietnam</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom:18px;">Teaching &amp; Mentoring</h3>
+                    <div class="entry" style="border-left:2px solid var(--border);">
+                        <div class="entry-head">
+                            <h3>BioTuring Inc.</h3>
+                            <span class="when">2024 — Present</span>
+                        </div>
+                        <div class="role">Data Team Trainer</div>
+                        <div class="org">Guided 20+ colleagues from non-programming backgrounds to use Python for data analysis; gave entry lectures on single-cell technology.</div>
+                    </div>
+                    <div class="entry" style="padding-bottom:0;">
+                        <div class="entry-head">
+                            <h3>International University</h3>
+                            <span class="when">2021</span>
+                        </div>
+                        <div class="role">Teaching Assistant — Bioinformatics</div>
+                        <div class="org">Supported lectures, examinations, and primer design (SNP/STR) with Primer-BLAST.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AWARDS -->
+        <section id="awards">
+            <div class="section-label">// recognition</div>
+            <h2>Honors &amp; Certificates</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 style="margin-bottom:8px;">Honors &amp; Awards</h3>
+                    <div class="award">
+                        <div class="a-title">Vietnam Education Foundation 2.0 — Nominated Candidate</div>
+                        <div class="muted">1 of 30 candidates passing two interview rounds with leading scholars · 2024</div>
+                    </div>
+                    <div class="award">
+                        <div class="a-title">Top 5% — National Entrance Exam, School of Biotechnology</div>
+                        <div class="muted">4-year partial scholarship (50% tuition) · 2017</div>
+                    </div>
+                    <div class="award">
+                        <div class="a-title">Top 10% Class Performance</div>
+                        <div class="muted">Annual scholarship · 2014 – 2017</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom:8px;">Certificates</h3>
+                    <div class="chips" style="margin-top:8px;">
+                        <span class="chip">PyTorch for Deep Learning</span>
+                        <span class="chip">Math for ML: Linear Algebra</span>
+                        <span class="chip">Data Structures</span>
+                        <span class="chip">Algorithm Toolbox</span>
+                        <span class="chip">Data Visualization with Python</span>
+                        <span class="chip">Python for Genomics Data Science</span>
+                    </div>
+                    <div class="muted" style="margin-top:12px; font-size:0.9em;">Coursera</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="mailto:svo@tgen.org">svo@tgen.org</a>
+            <a href="mailto:duyson1999@gmail.com">duyson1999@gmail.com</a>
+            <a href="https://github.com/sondvo" target="_blank" rel="noopener">github.com/sondvo</a>
+        </div>
+        <div>© <span id="year"></span> Duy Son (Jackson) Vo · Tempe, Arizona</div>
+    </footer>
+
+    <script>
+        // Theme: respect stored choice, then system preference, default dark.
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('themeToggle');
+            var stored = null;
+            try { stored = localStorage.getItem('theme'); } catch (e) {}
+            var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+            var theme = stored || (prefersLight ? 'light' : 'dark');
+            apply(theme);
+            btn.addEventListener('click', function () {
+                theme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                apply(theme);
+                try { localStorage.setItem('theme', theme); } catch (e) {}
+            });
+            function apply(t) {
+                root.setAttribute('data-theme', t);
+                btn.textContent = t === 'light' ? '☀' : '🌙';
+            }
+        })();
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
