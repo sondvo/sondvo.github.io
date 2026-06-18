@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software — Duy Son (Jackson) Vo</title>
+    <meta name="description" content="Software, tools, and pipelines built by Duy Son (Jackson) Vo.">
+    <link rel="stylesheet" href="styles.css">
+    <script>try{var t=localStorage.getItem('theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a class="nav-brand" href="index.html">Jackson&nbsp;<span class="mono">Vo</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="research.html">Research</a>
+                <a href="publications.html">Publications</a>
+                <a href="software.html" class="active">Software</a>
+                <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">🌙</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-head">
+        <div class="page-head-inner">
+            <div class="eyebrow">// software</div>
+            <h1>Software &amp; Tools</h1>
+            <p>Tools, packages, and pipelines I've built for single-cell and genomics work.</p>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section>
+            <div class="sw-list">
+
+                <article class="sw-item">
+                    <a class="sw-thumb" href="img/sc_tools.gif" target="_blank" rel="noopener">
+                        <img src="img/sc_tools.gif" alt="Single-cell analysis toolkit demo" loading="lazy">
+                    </a>
+                    <div class="sw-body">
+                        <h3>Single-cell analysis toolkit</h3>
+                        <p class="muted sw-desc">
+                            <!-- TODO: describe this tool in a sentence or two. -->
+                            A set of tools for exploring and analyzing single-cell data.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="sw-item">
+                    <a class="sw-thumb" href="img/img_adjust.gif" target="_blank" rel="noopener">
+                        <img src="img/img_adjust.gif" alt="Image adjustment tool demo" loading="lazy">
+                    </a>
+                    <div class="sw-body">
+                        <h3>Image adjustment tool</h3>
+                        <p class="muted sw-desc">
+                            <!-- TODO: describe this tool in a sentence or two. -->
+                            An interactive tool for adjusting and aligning imaging data.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="sw-item">
+                    <a class="sw-thumb" href="img/clonotype.gif" target="_blank" rel="noopener">
+                        <img src="img/clonotype.gif" alt="Clonotype analysis and visualization demo" loading="lazy">
+                    </a>
+                    <div class="sw-body">
+                        <h3>Clonotype analysis &amp; visualization</h3>
+                        <p class="muted sw-desc">
+                            An open-source package for processing, analyzing, and visualizing single-cell
+                            clonotypes (scTCR/BCR).
+                        </p>
+                    </div>
+                </article>
+
+                <article class="sw-item">
+                    <a class="sw-thumb" href="img/blastn_auto_pipeline.png" target="_blank" rel="noopener">
+                        <img src="img/blastn_auto_pipeline.png" alt="Defensins annotation pipeline diagram" loading="lazy">
+                    </a>
+                    <div class="sw-body">
+                        <h3>Automated gene annotation pipeline (BLAST)</h3>
+                        <p class="muted sw-desc">
+                            A Python pipeline that annotates genes across species using tBLASTn and BLASTx.
+                            Built for my B.Sc. thesis to identify defensins in the Black Soldier Fly — recovering
+                            9 previously annotated and 22 novel putative defensins.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div> Last updated: May 27th, 2026 </div>
+    </footer>
+</body>
+</html>

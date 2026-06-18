@@ -13,7 +13,7 @@ Multi-page static site — no build step, no dependencies. Edit directly and pus
 | [`index.html`](index.html) | Home — hero, about, highlights |
 | [`research.html`](research.html) | Research experience (timeline) |
 | [`publications.html`](publications.html) | Publications & posters |
-| [`cv.html`](cv.html) | Education, skills, teaching, honors |
+| [`software.html`](software.html) | Software, tools & pipelines (in `img/`) |
 | [`styles.css`](styles.css) | Shared styling (all pages) |
 | [`main.js`](main.js) | Shared theme toggle |
 
