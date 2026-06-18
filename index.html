@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duy Son (Jackson) Vo - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #0366d6;
+            --text-color: #24292e;
+            --bg-color: #f6f8fa;
+            --container-bg: #ffffff;
+            --border-color: #e1e4e8;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--container-bg);
+            padding: 40px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+        }
+        .contact {
+            font-size: 1.1em;
+            color: #586069;
+        }
+        .contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+        h3 {
+            margin: 20px 0 5px 0;
+            font-size: 1.3em;
+        }
+        .meta {
+            font-size: 0.95em;
+            color: #586069;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .project-title {
+            font-weight: 600;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Duy Son (Jackson) Vo</h1>
+            <div class="contact">
+                3941 S Mill Ave, Tempe, Arizona, USA 85282<br>
+                <a href="mailto:duyson1999@gmail.com">duyson1999@gmail.com</a> | <a href="mailto:svo@tgen.org">svo@tgen.org</a><br>
+                GitHub: <a href="https://github.com/sondvo" target="_blank">github.com/sondvo</a>
+            </div>
+        </header>
+
+        <section id="education">
+            <h2>Education</h2>
+            
+            <h3>Arizona State University & The Translational Genomics Research Institute</h3>
+            <div class="meta">PhD student, Cellular and Molecular Biology | Phoenix, Arizona, USA | 2025 - Present</div>
+            <ul>
+                <li>Cumulative GPA: 4.00/4.00</li>
+            </ul>
+
+            <h3>Ho Chi Minh City International University - Vietnam National University</h3>
+            <div class="meta">Bachelor of Science, Biotechnology | Ho Chi Minh City, Vietnam | 2017 - 2022</div>
+            <ul>
+                <li>Cumulative GPA: 82.8 / 100 (Degree Classification: very good)</li>
+                <li>Thesis: In silico identification of defensins in the Black Soldier Fly (grade: 93)</li>
+            </ul>
+        </section>
+
+        <section id="experience">
+            <h2>Research Experience</h2>
+
+            <h3>The Translational Genomics Research Institute</h3>
+            <div class="meta">PhD Student | Advisor: Nicholas Banovich, Ph.D. | Phoenix, Arizona, USA | 08/2025 - Present</div>
+            <ul>
+                <li><span class="project-title">Project: IPF niche analysis:</span> Multi-omics analysis on large-scale datasets (>100M cells). Utilized Deep Learning to incorporate spatial coordinates and transcriptomics for detecting different tissue domains in the VisiumHD and Xenium datasets.</li>
+                <li><span class="project-title">Project: IPF polygenic risk scores and single-cell morphology:</span> Bridging individual clinical background, genetics information, with spatial transcriptomics and cell morphology (H&E / IHC).</li>
+            </ul>
+
+            <h3>BioTuring Inc.</h3>
+            <div class="meta">Biomedical Research Scientist | Advisors: Thang Pham, Ph.D.; Han Do, Ph.D.; Son Pham, Ph.D. | Ho Chi Minh City, Vietnam | 10/2023 - 06/2025</div>
+            <ul>
+                <li><span class="project-title">Immune landscape in Classic Galactosemia:</span> Representing BioTuring to collaborate with NIH scientists to conduct spatial, single-cell analyses.</li>
+                <li><span class="project-title">Stem-cell derived islets in treating Type 1 Diabetes:</span> Representing BioTuring to collaborate with Vertex, Curio, and Harvard University (Melton lab) to understand how immune cells interact with stem cell-derived islet cells. Conducted differential gene expression, pathway enrichment, trajectory analyses, and cell-cell communication on single-cell data. Incorporated spatial data to assess distance effects.</li>
+                <li><span class="project-title">CosMX kidney analyses:</span> Managed computational analyses and established an accurate cell type annotation pipeline of kidney tissue from CosMX technology in collaboration with the University of Calgary.</li>
+                <li><span class="project-title">Cell type prediction and CD4+ helper atlases:</span> Developed a new algorithm to predict all subtypes of CD4+ helper T cells. Established an efficient generic pipeline to preprocess and integrate large datasets. Finished T-helper 2, T-helper 17, Regulatory T cell, T follicular helper, and T-helper 1 atlases.</li>
+            </ul>
+
+            <div class="meta">Bioinformatician - Software Engineer | Supervisors: Huy Nguyen; Thao Truong | Ho Chi Minh City, Vietnam | 5/2022 - 12/2023</div>
+            <ul>
+                <li>Contributed to developing back-end of BioTuring ecosystem products (Talk2Data, BBrowserX, Lens) used by >70 pharmaceutical companies.</li>
+                <li>Investigated and created official pipelines for emerging spatial-omics technologies: Visium, GeoMx, Xenium, CosMx, MERFISH, CODEX, CyCIF, mIHC.</li>
+                <li>Developed and maintained BioTuring API packages: Bioflex and BioTuring SDK.</li>
+            </ul>
+
+            <div class="meta">Data Curator | Supervisor: Thao Truong | Ho Chi Minh City, Vietnam | 1/2022 - 5/2022</div>
+            <ul>
+                <li>Collected single-cell datasets from public studies and standardized formats using Python, R, and bash. Added approximately 1,000 studies to the database.</li>
+            </ul>
+        </section>
+
+        <section id="publications">
+            <h2>Select Publications & Posters</h2>
+            <ul>
+                <li><strong>Son Vo</strong>, Kieran Meadows, Han Do, Kevin Chapman, Graciela Andonegui, Daniel A. Muruve, Thang Pham, and Justin Chun. "Streamlining Spatial Transcriptomics for Human Kidney Tissue". BioTechniques, DOI: 10.1080/07366205.2025.2591484</li>
+                <li>Kieran Meadows, Hyunjae Chung, <strong>Son Vo</strong>, et al. "Spatial transcriptomics identifies IL-32 as a lipid droplet-associated cytokine linked to tubular injury in human diabetic kidney disease." Inflammation Research, DOI: 10.1007/s00011-026-02192-y</li>
+                <li>Raghuveer Kavarthapu, <strong>Son Vo</strong>, et al. "Transcriptomic profiling of the ovarian immune landscape reveals distinct macrophage subsets..." Cell Communication and Signaling, DOI: 10.1186/s12964-026-02950-9</li>
+                <li><strong>Son Vo*</strong>, Marian Suprun*, Han Do, My Ngo, Rajesh Rao, Marta Polak, Calixte Monast, and Son Pham. "Single-Cell Atlas of T-Helper 2 Cells Reveals Distinct Cytokine Functions Across Diseases". Preprint, DOI: 10.1101/2025.09.20.677532</li>
+                <li><em>Poster:</em> <strong>Son Vo</strong>, Hiep Dang, Han Do, and Son Pham. "Unveiling the Th2 Cell Landscape...". Research in Computational Molecular Biology - RECOMB, U.S.A., 5/2024</li>
+            </ul>
+        </section>
+
+        <section id="skills-awards">
+            <h2>Certificates & Honors</h2>
+            <ul>
+                <li><strong>Honors:</strong> Nominated candidate of Vietnam Education Foundation 2.0 (9/2024); Top 5% in National Entrance Exam of the School of Biotechnology (2017-2022).</li>
+                <li><strong>Certificates (Coursera):</strong> PyTorch for Deep Learning, Math for Machine Learning: Linear Algebra, Data Structures and Algorithms, Data Visualization with Python, Python for Genomics Data Science.</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
