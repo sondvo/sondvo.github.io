@@ -33,6 +33,9 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     transition: background 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -300,6 +303,7 @@ h3 { font-size: 1.15em; margin: 0 0 4px; }
 .stat .lbl { color: var(--text-dim); font-size: 0.9em; margin-top: 6px; }
 
 footer {
+    margin-top: auto;
     padding: 40px 24px 60px;
     text-align: center;
     color: var(--text-dim);
